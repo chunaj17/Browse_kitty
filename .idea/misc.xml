@@ -3,9 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/dialoge_shape.xml" value="0.2405" />
         <entry key="app/src/main/res/font/font.xml" value="0.38645833333333335" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.264945652173913" />
         <entry key="app/src/main/res/layout/choose_fragment.xml" value="0.264945652173913" />
+        <entry key="app/src/main/res/layout/dialoge_image.xml" value="0.264945652173913" />
         <entry key="app/src/main/res/layout/pets_fragment.xml" value="0.18177083333333333" />
         <entry key="app/src/main/res/layout/pets_image_list.xml" value="0.264945652173913" />
       </map>

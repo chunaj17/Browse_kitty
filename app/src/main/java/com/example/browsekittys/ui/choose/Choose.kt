@@ -48,32 +48,36 @@ class Choose : Fragment() {
             }
             button.setOnClickListener {
                 if (binding.itemTextField.editText?.text.toString() != "") {
+                    categoryId = when (categoryTextField.editText?.text.toString()) {
+                        "boxes" -> 5
+                        "clothes" -> 15
+                        "hats" -> 1
+                        "sinks" -> 14
+                        "space" -> 2
+                        "sunglasses" -> 4
+                        else -> 7
+                    }
                     sharedViewModel.setData(
                         binding.itemTextField.editText?.text.toString().toInt(),
                         categoryId
                     )
-                    categoryId = when (categoryTextField.editText?.text.toString()) {
-                    "boxes" -> 1
-                    "clothes" -> 15
-                    "hats" -> 1
-                    "sinks" -> 14
-                    "space" -> 2
-                    "sunglasses" -> 4
-                    else -> 7
+                    if (itemTextField.editText?.text.toString() !== "" && itemTextField.editText?.text.toString()
+                            .toInt() <= 100
+                    ) {
+//                        findNavController().navigate(
+//                            ChooseDirections.actionChooseToPets(
+//                                binding.itemTextField.editText?.text.toString().toInt(), categoryId
+//                            )
+//                        )
+                        findNavController().navigate(R.id.action_choose_to_pets)
+                        itemTextField.error = "more than 100 not allowed"
+                    } else if (itemTextField.editText?.text.toString().toInt() > 100) {
+                        itemTextField.error = "more than 100 not allowed"
+                    } else if (itemTextField.editText?.text.toString() === ""){
+                        itemTextField.error = "provide input"
+                    }
+                    println("in choose $categoryId")
                 }
-              if (itemTextField.editText?.text.toString() !== ""){
-                 findNavController().navigate(R.id.action_choose_to_pets)
-              }else{
-                  itemTextField.error = "provide input"
-              }
-                }
-
-//                findNavController().navigate(
-//                    ChooseDirections.actionChooseToPets(
-//                        binding.itemTextField.editText?.text.toString().toInt(), categoryId
-//                    )
-//                )
-
             }
         }
         return binding.root

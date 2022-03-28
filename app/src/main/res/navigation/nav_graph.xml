@@ -22,9 +22,6 @@
         <action
             android:id="@+id/action_choose_to_pets"
             app:destination="@id/pets" />
-        <action
-            android:id="@+id/action_choose_to_mainFragment"
-            app:destination="@id/mainFragment" />
     </fragment>
     <fragment
         android:id="@+id/pets"

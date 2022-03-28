@@ -9,6 +9,6 @@ interface RetroInterface {
     @GET("search")
     fun getImages(
         @Query("limit") limit: Int?,
-        @Query("category_id") category_id:Int?
+        @Query("category_ids") category_ids:Int?
     ): Call<List<DataResultItem>>
 }
