@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Browse kitty\'s</string>
+    <string name="wellcome_greeting"><b>cat say\'s wellcome to cat world!!</b></string>
+    <string name="next">Next</string>
+</resources>
