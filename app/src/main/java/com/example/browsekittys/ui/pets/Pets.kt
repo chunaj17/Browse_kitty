@@ -48,6 +48,7 @@ class Pets : Fragment(), PetsListAdapter.Interaction {
         categoryId   = sharedViewModel.categoryId.value
         viewModel = ViewModelProvider(this/* viewModelFactory*/)[PetsViewModel::class.java]
         binding.progressBar.visibility  = View.VISIBLE
+        binding.loadingText.visibility = View.VISIBLE
         initRecyclerView()
         lifecycleScope.launch(Dispatchers.IO) {
             viewModel.getImages(limit,categoryId)
@@ -58,6 +59,7 @@ class Pets : Fragment(), PetsListAdapter.Interaction {
             } else {
                 binding.catsImageList.visibility = View.VISIBLE
                 binding.progressBar.visibility  = View.GONE
+                binding.loadingText.visibility  = View.GONE
                 petsListAdapter.submitList(it)
             }
         }

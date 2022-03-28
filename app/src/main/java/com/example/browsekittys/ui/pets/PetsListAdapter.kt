@@ -67,6 +67,7 @@ class PetsListAdapter(private val interaction: Interaction? = null) :
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: DataResultItem, position: Int) = with(binding) {
             progressBar.visibility  = View.VISIBLE
+            loadingText.visibility = View.VISIBLE
             Glide.with(catImage.context)
                 .load(item.url)
 //                .placeholder(R.drawable.progress_anim)
@@ -90,6 +91,7 @@ class PetsListAdapter(private val interaction: Interaction? = null) :
                         isFirstResource: Boolean
                     ): Boolean {
                         progressBar.visibility  = View.GONE
+                        loadingText.visibility = View.GONE
                         return false
                     }
                 })
