@@ -15,6 +15,7 @@ class PetsViewModel(/*args: PetsArgs*/) : ViewModel() {
     }
 
     fun getImages(limit: Int?, cateGoryId:Int?)  {
+
         val retroService = RetrofitInstance.getRetroInstance()
         val call = retroService.getImages(limit,cateGoryId)
       return call.enqueue(object : Callback<List<DataResultItem>> {

@@ -44,6 +44,7 @@ class Pets : Fragment(), PetsListAdapter.Interaction {
     private val sharedViewModel: SharedViewModel by activityViewModels()
     private var limit: Int? = 0
     private var categoryId: Int? = 0
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -55,6 +56,7 @@ class Pets : Fragment(), PetsListAdapter.Interaction {
         viewModel = ViewModelProvider(this/* viewModelFactory*/)[PetsViewModel::class.java]
         binding.progressBar.visibility = View.VISIBLE
         binding.loadingText.visibility = View.VISIBLE
+
         initRecyclerView()
         lifecycleScope.launch(Dispatchers.IO) {
             viewModel.getImages(limit, categoryId)
@@ -67,11 +69,11 @@ class Pets : Fragment(), PetsListAdapter.Interaction {
                 binding.progressBar.visibility = View.GONE
                 binding.loadingText.visibility = View.GONE
                 petsListAdapter.submitList(it)
+                binding.catsImageList.scrollState
             }
         }
         return binding.root
     }
-
     private fun initRecyclerView() {
         binding.catsImageList.apply {
             layoutManager = LinearLayoutManager(activity)
@@ -96,9 +98,11 @@ class Pets : Fragment(), PetsListAdapter.Interaction {
                     val dialog = MaterialDialog(context!!)
                         .customView(R.layout.dialoge_image)
                     dialog.cornerRadius(size.toFloat())
-                    dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
                     dialog.findViewById<ImageView>(R.id.dialog_cat_img).setImageBitmap(resource)
                     dialog.show()
+                    dialog.findViewById<ImageView>(R.id.dialog_cat_img).setOnClickListener {
+                        println(item.url)
+                    }
 //                    val imageView: ImageView = ImageView(activity)
 //                    imageView.setImageBitmap(resource)
 //                    AlertDialog.Builder(activity)

@@ -40,8 +40,12 @@ class Choose : Fragment() {
         (binding.categoryTextField.editText as? AutoCompleteTextView)?.setAdapter(categoryAdapter)
         binding.apply {
             itemTextField.editText?.addTextChangedListener {
-                if (it!!.isNotBlank() && it.toString().toInt() > 100) itemTextField.error =
-                    "more than 100 " else itemTextField.error = null
+                if (it!!.isNotBlank() && it.toString().toInt() > 100){
+                    itemTextField.error = "more than 100 "
+                }else {
+                    itemTextField.error = null
+                }
+
             }
             categoryTextField.editText?.setOnClickListener {
                 it.hideKeyboard()
@@ -73,10 +77,9 @@ class Choose : Fragment() {
                         itemTextField.error = "more than 100 not allowed"
                     } else if (itemTextField.editText?.text.toString().toInt() > 100) {
                         itemTextField.error = "more than 100 not allowed"
-                    } else if (itemTextField.editText?.text.toString() === ""){
+                    } else if (itemTextField.editText?.text!!.count() == 0){
                         itemTextField.error = "provide input"
                     }
-                    println("in choose $categoryId")
                 }
             }
         }
